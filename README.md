@@ -1,4 +1,3 @@
-
 # Phishing Domain Detection
 
 A machine learning system to detect phishing URLs/domains. It looks at a URL, pulls out useful features (length, hyphens, subdomains, TLD, etc.), and predicts whether it is **Phishing** or **Not Phishing**.
@@ -134,6 +133,35 @@ python phishing-predictor.py input.csv -o results.csv
 ```
 
 The output CSV has three columns: `query`, `phishing_flag` (0/1), `phishing_label` (Phishing / Not Phishing).
+
+---
+
+## Run via Docker
+
+You don't need to set up Python locally — a ready-to-use image is available on Docker Hub.
+
+**1. Pull the image:**
+
+```bash
+docker pull ketanbagewadi/phishing-domain-detection
+```
+
+**2. Run it:**
+
+```bash
+docker run --rm -v $(pwd):/app/data ketanbagewadi/phishing-domain-detection python phishing-predictor.py /app/data/input.csv -o /app/data/results.csv
+```
+
+- `-v $(pwd):/app/data` mounts your current folder into the container so it can read your `input.csv` and write `results.csv` back to your machine.
+- Adjust the internal paths (`/app/data/...`) if the image's working directory is different.
+
+To train inside the container instead (make sure `all_urls.csv` is in the mounted folder):
+
+```bash
+docker run --rm -v $(pwd):/app/data ketanbagewadi/phishing-domain-detection python train.py
+```
+
+Docker Hub: [ketanbagewadi/phishing-domain-detection](https://hub.docker.com/r/ketanbagewadi/phishing-domain-detection)
 
 ---
 
