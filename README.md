@@ -1,4 +1,3 @@
-# phishing-domain-detection
 
 # Phishing Domain Detection
 
