@@ -3,7 +3,7 @@
 
 A machine learning system to detect phishing URLs/domains. It looks at a URL, pulls out useful features (length, hyphens, subdomains, TLD, etc.), and predicts whether it is **Phishing** or **Not Phishing**.
 
-Accuracy: **~95–97%** (Decision Tree model).
+Accuracy: **~95–97%** (Recommended: Decision Tree model).
 
 ---
 
