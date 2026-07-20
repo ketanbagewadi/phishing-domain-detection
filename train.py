@@ -24,9 +24,8 @@ import tldextract
 from typing import Dict, List, Optional
 
 
-# ----------------------------------------------------------------------
+
 # Feature helpers (these MUST match what predictor.py computes at inference)
-# ----------------------------------------------------------------------
 
 def extract_features(url):
     try:
@@ -167,7 +166,7 @@ def results(name: str, model: BaseEstimator) -> None:
 if __name__ == '__main__':
     # ------------------------------------------------------------------
     # Load & clean data
-    # ------------------------------------------------------------------
+
     df = pd.read_csv('all_urls.csv')
     print(f"Loaded dataset with {len(df)} rows")
 
@@ -181,7 +180,7 @@ if __name__ == '__main__':
 
     # ------------------------------------------------------------------
     # Group / parse
-    # ------------------------------------------------------------------
+
     df_grp = df.groupby("url")["label"].agg(list).reset_index()
     df_grp["parsed_url"] = df_grp["url"].apply(parse_url)
     df_grp["label"] = df_grp["label"].apply(lambda labels: ''.join(map(str, labels)))
