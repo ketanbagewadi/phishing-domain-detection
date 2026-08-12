@@ -25,9 +25,9 @@ import tldextract
 from typing import Dict, List, Optional
 
 
-# ----------------------------------------------------------------------
+
 # Feature helpers (MUST match what predictor.py computes at inference)
-# ----------------------------------------------------------------------
+
 
 def extract_features(url):
     try:
@@ -460,7 +460,7 @@ if __name__ == '__main__':
     # Threshold tuning on RandomForest to minimize false positives
     # (raise threshold above 0.5 -> fewer legit domains flagged as phishing,
     #  at the cost of catching slightly fewer phishing domains)
-    # ------------------------------------------------------------------
+
     classes = rf_clf.named_steps['classifier'].classes_
     bad_idx = list(classes).index('bad')
     probs = rf_clf.predict_proba(X_test)[:, bad_idx]
